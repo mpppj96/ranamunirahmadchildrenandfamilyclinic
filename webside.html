@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="color-scheme" content="light dark">
+    <title>Dr. Munir Ahmad Rana | Children & Family Clinic | Lahore</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* ─────────── LIGHT MODE TOKENS ─────────── */
+        :root {
+            --primary: #1e4a76;
+            --primary-dark: #0f3a5a;
+            --secondary: #1e7e6c;
+            --accent: #d97706;
+
+            --bg-page:   #fbfdff;
+            --bg-alt:    #f8fafc;
+            --bg-card:   rgba(255,255,255,0.90);
+            --bg-card-solid: #ffffff;
+            --bg-service: rgba(255,255,255,0.92);
+
+            --text-body:    #0b1e2e;
+            --text-muted:   #334155;
+            --text-sub:     #2c3e50;
+            --text-nav:     #1e293b;
+            --text-badge:   #0c4a6e;
+
+            --border-section: #eef2ff;
+            --border-card:    #eef2ff;
+            --border-faq:     #eef2ff;
+            --border-nav:     rgba(255,255,255,0.6);
+
+            --glass-bg:     rgba(255,255,255,0.82);
+            --glass-border: rgba(255,255,255,0.7);
+
+            --badge-bg: #e0f2fe;
+            --stat-info-bg: #eef2ff40;
+
+            --input-bg: rgba(255,255,255,0.9);
+            --input-color: #0b1e2e;
+
+            --nav-bg: rgba(255,255,255,0.92);
+            --shadow-glass: 0 8px 20px rgba(0,0,0,0.05), 0 0 0 1px rgba(255,255,255,0.5);
+            --shadow-lg: 0 20px 35px -12px rgba(0,0,0,0.10);
+            --shadow-card: 0 10px 25px -5px rgba(0,0,0,0.05);
+
+            --hero-bg: radial-gradient(ellipse at 80% 20%, rgba(220,240,255,0.7), rgba(255,255,245,0.95));
+            --faq-bg: #ffffff;
+            --addr-bg: #eef2ff;
+        }
+
+        /* ─────────── DARK MODE TOKENS ─────────── */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-page:   #0d1117;
+                --bg-alt:    #111827;
+                --bg-card:   rgba(30,41,59,0.88);
+                --bg-card-solid: #1e293b;
+                --bg-service: rgba(30,41,59,0.90);
+
+                --text-body:    #e2e8f0;
+                --text-muted:   #94a3b8;
+                --text-sub:     #cbd5e1;
+                --text-nav:     #e2e8f0;
+                --text-badge:   #7dd3fc;
+
+                --border-section: rgba(255,255,255,0.06);
+                --border-card:    rgba(255,255,255,0.08);
+                --border-faq:     rgba(255,255,255,0.06);
+                --border-nav:     rgba(255,255,255,0.08);
+
+                --glass-bg:     rgba(22,33,51,0.85);
+                --glass-border: rgba(255,255,255,0.1);
+
+                --badge-bg: rgba(14,74,120,0.45);
+                --stat-info-bg: rgba(255,255,255,0.05);
+
+                --input-bg: rgba(255,255,255,0.08);
+                --input-color: #e2e8f0;
+
+                --nav-bg: rgba(13,17,23,0.94);
+                --shadow-glass: 0 8px 20px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.05);
+                --shadow-lg: 0 20px 35px -12px rgba(0,0,0,0.5);
+                --shadow-card: 0 10px 25px -5px rgba(0,0,0,0.4);
+
+                --hero-bg: radial-gradient(ellipse at 80% 20%, rgba(14,55,100,0.55), rgba(10,20,30,0.95));
+                --faq-bg: #1e293b;
+                --addr-bg: rgba(255,255,255,0.06);
+            }
+        }
+
+        /* ─────────── BASE ─────────── */
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-page);
+            color: var(--text-body);
+            scroll-behavior: smooth;
+            line-height: 1.5;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-radius: 2rem;
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow-glass);
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 25px 35px -12px rgba(0,0,0,0.2);
+        }
+
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+
+        /* ─────────── NAV ─────────── */
+        nav {
+            background: var(--nav-bg);
+            backdrop-filter: blur(16px);
+            position: sticky; top: 0; z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;
+            border-bottom: 1px solid var(--border-nav);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+        }
+        .logo {
+            font-size: 1.2rem; font-weight: 800;
+            background: linear-gradient(135deg, #155799, #159957);
+            -webkit-background-clip: text; background-clip: text; color: transparent;
+            line-height: 1.3;
+        }
+        .logo span {
+            font-size: 0.75rem; font-weight: 500; color: #2d6a4f;
+            background: none; -webkit-background-clip: unset;
+        }
+        @media (prefers-color-scheme: dark) {
+            .logo span { color: #4ade80; }
+        }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a {
+            text-decoration: none; font-weight: 600;
+            color: var(--text-nav); transition: 0.2s; font-size: 0.9rem;
+        }
+        .nav-links a:hover { color: var(--primary); }
+
+        .btn-outline-glass {
+            background: rgba(30,74,118,0.12);
+            border: 1px solid rgba(30,74,118,0.35);
+            padding: 0.6rem 1.3rem; border-radius: 40px;
+            font-weight: 700; text-decoration: none; color: var(--primary-dark);
+            transition: 0.2s;
+        }
+        @media (prefers-color-scheme: dark) {
+            .btn-outline-glass {
+                background: rgba(30,74,118,0.25);
+                border-color: rgba(96,165,250,0.4);
+                color: #93c5fd;
+            }
+        }
+        .btn-outline-glass:hover { background: var(--primary); color: white; border-color: transparent; }
+
+        .btn-primary {
+            background: linear-gradient(105deg,#1e4a76 0%,#1e7e6c 100%);
+            border: none; padding: 0.9rem 2rem; border-radius: 40px;
+            font-weight: 700; color: white;
+            display: inline-flex; align-items: center; gap: 10px;
+            cursor: pointer; transition: 0.25s;
+            box-shadow: 0 8px 18px rgba(30,74,118,0.25);
+            text-decoration: none;
+        }
+        .btn-primary:hover { transform: scale(1.02); box-shadow: 0 12px 22px rgba(30,74,118,0.35); }
+
+        .btn-call {
+            text-decoration: none;
+            background: var(--bg-card-solid);
+            padding: 0.8rem 1.8rem;
+            border-radius: 40px;
+            font-weight: 600;
+            border: 1px solid var(--border-card);
+            color: var(--text-body);
+            display: inline-flex; align-items: center; gap: 8px;
+        }
+
+        /* ─────────── SECTIONS ─────────── */
+        section { padding: 5rem 0; border-bottom: 1px solid var(--border-section); }
+
+        .section-badge {
+            display: inline-block;
+            background: var(--badge-bg);
+            color: var(--text-badge);
+            font-weight: 700; letter-spacing: 1px; font-size: 0.7rem;
+            padding: 0.3rem 1rem; border-radius: 40px;
+            margin-bottom: 1.2rem; text-transform: uppercase;
+        }
+
+        h2 {
+            font-size: 2.5rem; font-weight: 800; letter-spacing: -0.02em;
+            background: linear-gradient(135deg, var(--text-body), #2c3e50);
+            -webkit-background-clip: text; background-clip: text; color: transparent;
+            margin-bottom: 1rem;
+        }
+        @media (prefers-color-scheme: dark) {
+            h2 { background: linear-gradient(135deg, #e2e8f0, #94a3b8); -webkit-background-clip: text; background-clip: text; }
+        }
+
+        /* ─────────── HERO ─────────── */
+        .hero { background: var(--hero-bg); padding: 3rem 0 5rem 0; }
+        .hero-grid { display: flex; flex-wrap: wrap; align-items: center; gap: 2rem; }
+        .hero-content h1 { font-size: 3.3rem; font-weight: 800; line-height: 1.2; margin-bottom: 1rem; color: var(--text-body); }
+
+        .hero-sub { font-size: 1.2rem; color: var(--text-sub); margin: 1.5rem 0; }
+        .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+        .timing-card {
+            flex: 1; min-width: 220px;
+        }
+        .timing-card .glass-card { padding: 1.8rem; text-align: center; }
+        .timing-card h3 { margin: 0.5rem 0; color: var(--text-body); }
+        .timing-card p { color: var(--text-muted); }
+        .timing-card hr { margin: 1rem 0; border: none; border-top: 1px solid var(--border-card); }
+
+        /* ─────────── SERVICES ─────────── */
+        .service-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(270px,1fr)); gap: 2rem; margin-top: 2rem; }
+        .service-item {
+            background: var(--bg-service);
+            border-radius: 1.8rem; padding: 2rem;
+            box-shadow: var(--shadow-card);
+            border: 1px solid var(--border-card);
+            transition: all 0.2s;
+        }
+        .service-item h3 { margin: 0.75rem 0 0.4rem; color: var(--text-body); }
+        .service-item p { color: var(--text-muted); }
+
+        /* ─────────── DOCTOR ─────────── */
+        .doctor-section { background: var(--bg-alt); }
+        .doctor-showcase {
+            background: var(--bg-card) !important;
+            backdrop-filter: blur(12px);
+            border-radius: 2.5rem; padding: 2.5rem;
+            border: 1px solid var(--glass-border);
+        }
+        .credential-list { list-style: none; margin-top: 1rem; }
+        .credential-list li { margin-bottom: 0.6rem; display: flex; align-items: center; gap: 12px; color: var(--text-muted); }
+        .credential-list i { color: var(--secondary); font-size: 1.2rem; }
+
+        .doctor-info h2 { background: linear-gradient(135deg,#155799,#0f5b4b); -webkit-background-clip: text; background-clip: text; margin-bottom: 0.25rem; }
+        .doctor-sub-role { font-size: 1.1rem; font-weight: 600; color: var(--primary); }
+        .doctor-title { font-weight: 500; color: var(--text-muted); }
+        .cred-box { margin: 1.2rem 0; background: var(--stat-info-bg); padding: 0.8rem; border-radius: 1rem; color: var(--text-muted); }
+        .cred-box p { margin-bottom: 0.4rem; }
+
+        /* ─────────── STATS ─────────── */
+        .stat-grid { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; margin: 2rem 0; }
+        .stat { text-align: center; font-weight: 800; }
+        .stat-number { font-size: 2rem; color: var(--primary); }
+        .stat-label { color: var(--text-muted); font-weight: 500; }
+
+        /* ─────────── WEEKEND ─────────── */
+        .weekend-section { text-align: center; }
+        .weekend-section p { max-width: 700px; margin: 0 auto 2rem auto; color: var(--text-muted); }
+        .weekend-section strong { color: var(--text-body); }
+
+        /* ─────────── REVIEWS ─────────── */
+        .reviews-section { background: var(--bg-page); }
+        .review-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 1.8rem; }
+        .review-card { background: var(--bg-card) !important; padding: 1.8rem; }
+        .review-card p { color: var(--text-muted); }
+        .review-card .reviewer { margin-top: 1rem; color: var(--text-body); font-weight: 600; }
+
+        /* ─────────── BOOKING ─────────── */
+        .booking-glass {
+            background: linear-gradient(135deg,#103c48,#0b3b32);
+            border-radius: 2.5rem; padding: 3rem; color: white;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center;
+        }
+        .booking-glass h2 { color: white; background: none; -webkit-background-clip: unset; }
+        .booking-glass p { color: rgba(255,255,255,0.8); margin-bottom: 0.5rem; }
+        .booking-glass strong { color: white; }
+        .addr-box { margin-top: 1rem; background: rgba(255,255,255,0.15); backdrop-filter: blur(4px); border-radius: 1rem; padding: 0.8rem; color: rgba(255,255,255,0.9); }
+        .booking-form input {
+            width: 100%; padding: 14px; border-radius: 60px; border: none;
+            margin-bottom: 12px;
+            background: rgba(255,255,255,0.15);
+            color: white;
+            outline: none;
+        }
+        .booking-form input::placeholder { color: rgba(255,255,255,0.6); }
+        .booking-form input:focus { background: rgba(255,255,255,0.22); }
+
+        /* ─────────── MAP ─────────── */
+        .map-wrapper { border-radius: 2rem; overflow: hidden; box-shadow: var(--shadow-lg); }
+        .addr-info { margin-top: 1rem; background: var(--addr-bg); border-radius: 1.5rem; padding: 0.8rem; text-align: center; color: var(--text-muted); }
+        .addr-info strong { color: var(--text-body); }
+
+        /* ─────────── FAQ ─────────── */
+        .faq-item {
+            background: var(--faq-bg);
+            border-radius: 1.2rem; margin-bottom: 0.8rem;
+            border: 1px solid var(--border-faq); overflow: hidden;
+        }
+        .faq-header {
+            padding: 1.2rem 1.5rem; font-weight: 700; cursor: pointer;
+            display: flex; justify-content: space-between;
+            color: var(--text-body);
+        }
+        .faq-body {
+            max-height: 0; overflow: hidden; transition: 0.4s ease;
+            padding: 0 1.5rem; color: var(--text-muted);
+        }
+        .faq-item.open .faq-body { max-height: 220px; padding-bottom: 1.5rem; }
+
+        /* ─────────── FLOATING ─────────── */
+        .floating { position: fixed; bottom: 28px; right: 28px; display: flex; flex-direction: column; gap: 14px; z-index: 1100; }
+        .f-btn {
+            width: 56px; height: 56px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; color: white;
+            box-shadow: 0 10px 18px rgba(0,0,0,0.25);
+            transition: 0.2s; text-decoration: none;
+        }
+        .f-btn:hover { transform: scale(1.1); }
+
+        footer {
+            background: #0f172a;
+            color: #94a3b8;
+            text-align: center;
+            padding: 2rem;
+        }
+        footer a { color: #94a3b8; text-decoration: none; }
+        footer strong { color: #e2e8f0; }
+
+        /* ─────────── RESPONSIVE ─────────── */
+        @media (max-width: 800px) {
+            .nav-links { display: none; }
+            .hero-content h1 { font-size: 2.4rem; }
+            .booking-glass { grid-template-columns: 1fr; }
+            h2 { font-size: 2rem; }
+            .container { padding: 0 1.2rem; }
+            .doctor-showcase { text-align: center; }
+            .credential-list li { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav>
+    <div class="logo">
+        Dr. Munir Ahmad Rana<br><span>Children & Family Clinic</span>
+    </div>
+    <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#doctor">Specialist</a></li>
+        <li><a href="#booking">Appointment</a></li>
+        <li><a href="#map">Location</a></li>
+        <li><a href="#faq">FAQs</a></li>
+    </ul>
+    <a href="#booking" class="btn-outline-glass"><i class="fas fa-calendar-check"></i> Book Now</a>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section id="home" class="hero">
+    <div class="container">
+        <div class="hero-grid">
+            <div class="hero-content" style="flex:2; min-width: 280px;">
+                <span class="section-badge"><i class="fas fa-stethoscope"></i> 25+ Years of Healing Legacy</span>
+                <h1>Expert Child &<br>Family Physician</h1>
+                <p class="hero-sub">👨‍⚕️ M.B.B.S. (King Edward Medical University) | Child Specialist | Addl. Medical Superintendent, Sir Ganga Ram Hospital</p>
+                <div class="hero-actions">
+                    <a href="#booking" class="btn-primary"><i class="fas fa-calendar-alt"></i> Schedule Visit</a>
+                    <a href="tel:03064660461" class="btn-call"><i class="fas fa-phone-alt"></i> Call 0306 4660461</a>
+                </div>
+            </div>
+            <div class="timing-card">
+                <div class="glass-card">
+                    <i class="fas fa-clock" style="font-size: 2rem; color:#1e4a76;"></i>
+                    <h3>Evening Hours</h3>
+                    <p>Mon – Sat: <strong>7:00 PM – 11:00 PM</strong><br>Sunday: Emergency Call</p>
+                    <hr>
+                    <p><i class="fas fa-map-marker-alt" style="color:#e74c3c;"></i> Cantt View Phase 1, 2 Street<br>Lahore, Punjab 54000</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─── SERVICES ─── -->
+<section id="services">
+    <div class="container">
+        <span class="section-badge"><i class="fas fa-baby-carriage"></i> Compassionate Care</span>
+        <h2>Advanced Pediatric & Family Medicine</h2>
+        <div class="service-grid">
+            <div class="service-item glass-card">
+                <i class="fas fa-child fa-2x" style="color:#1e4a76;"></i>
+                <h3>Newborn & Pediatrics</h3>
+                <p>Growth monitoring, neonatal triage, nutritional guidance & developmental screening.</p>
+            </div>
+            <div class="service-item glass-card">
+                <i class="fas fa-lungs fa-2x" style="color:#1e4a76;"></i>
+                <h3>Respiratory & Allergy</h3>
+                <p>Asthma, nebulization, chronic cough & seasonal allergy management.</p>
+            </div>
+            <div class="service-item glass-card">
+                <i class="fas fa-syringe fa-2x" style="color:#1e4a76;"></i>
+                <h3>Vaccination Hub</h3>
+                <p>WHO-approved EPI & optional vaccines (Flu, Pneumococcal, Hepatitis).</p>
+            </div>
+            <div class="service-item glass-card">
+                <i class="fas fa-heartbeat fa-2x" style="color:#1e4a76;"></i>
+                <h3>General Medicine</h3>
+                <p>Fever, diabetes, hypertension, geriatric care & lifestyle diseases.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─── DOCTOR ─── -->
+<section id="doctor" class="doctor-section">
+    <div class="container">
+        <div class="doctor-showcase glass-card">
+            <div class="doctor-info">
+                <span class="section-badge"><i class="fas fa-user-md"></i> Principal Physician</span>
+                <h2>Dr. Munir Ahmad Rana</h2>
+                <p class="doctor-sub-role">M.B.B.S. (KE), RMP (Pb.), PMDC (Isd.)</p>
+                <p class="doctor-title">Child Specialist & Family Physician</p>
+                <div class="cred-box">
+                    <p><i class="fas fa-graduation-cap"></i> <strong style="color:var(--text-body)">King Edward Medical University, Lahore</strong> — Batch of 1999</p>
+                    <p><i class="fas fa-hospital-user"></i> <strong style="color:var(--text-body)">Addl. Medical Superintendent & Director Emergency</strong><br>Govt. Sir Ganga Ram Hospital & Fatima Medical College, Lahore</p>
+                    <p><i class="fas fa-clinic-medical"></i> <strong style="color:var(--text-body)">Ex. House Physician & Surgeon</strong>, Mayo Hospital Lahore</p>
+                </div>
+                <ul class="credential-list">
+                    <li><i class="fas fa-check-circle"></i> 25+ Years of Clinical Excellence</li>
+                    <li><i class="fas fa-check-circle"></i> Renowned Pediatric & Family Medicine Consultant</li>
+                    <li><i class="fas fa-check-circle"></i> Leadership in Emergency Medicine & Administration</li>
+                    <li><i class="fas fa-check-circle"></i> Member Pakistan Medical & Dental Council (PMDC)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─── STATS ─── -->
+<div class="container">
+    <div class="stat-grid">
+        <div class="stat"><div class="stat-number">25+</div><div class="stat-label">Years Experience</div></div>
+        <div class="stat"><div class="stat-number">20k+</div><div class="stat-label">Children Treated</div></div>
+        <div class="stat"><div class="stat-number">24/7</div><div class="stat-label">Emergency Oversight</div></div>
+    </div>
+</div>
+
+<!-- ─── WEEKEND ─── -->
+<section id="weekend-care">
+    <div class="container weekend-section">
+        <span class="section-badge"><i class="fas fa-ambulance"></i> Round the Clock Support</span>
+        <h2>Weekend & Urgent Care</h2>
+        <p>As Director Emergency at Sir Ganga Ram Hospital, Dr. Rana ensures critical care pathways. For clinic emergencies, call <strong>0306 4660461</strong> for immediate guidance.</p>
+        <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+            <a href="tel:03064660461" class="btn-primary" style="background:#2c3e66;"><i class="fas fa-phone"></i> Call Now</a>
+            <a href="https://wa.me/923064660461" class="btn-primary" style="background:linear-gradient(145deg,#25d366,#128C7E);"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        </div>
+    </div>
+</section>
+
+<!-- ─── REVIEWS ─── -->
+<section id="reviews" class="reviews-section">
+    <div class="container">
+        <div style="text-align:center;">
+            <span class="section-badge"><i class="fas fa-star"></i> Trusted Voices</span>
+            <h2>Families Share Their Experience</h2>
+        </div>
+        <div class="review-grid" style="margin-top:2rem;">
+            <div class="review-card glass-card">
+                <div style="color:#fbbf24; font-size:1.1rem;">★★★★★</div>
+                <p style="margin-top:0.8rem;">"Dr. Munir Ahmad Rana is a legend in Lahore. His expertise and calm demeanor put us at ease. Our child's health improved drastically."</p>
+                <p class="reviewer">— Farah Naeem</p>
+            </div>
+            <div class="review-card glass-card">
+                <div style="color:#fbbf24; font-size:1.1rem;">★★★★★</div>
+                <p style="margin-top:0.8rem;">"Being a physician himself, he gave accurate diagnosis for my elderly father. Highly recommend his family clinic."</p>
+                <p class="reviewer">— Ahmed S.</p>
+            </div>
+            <div class="review-card glass-card">
+                <div style="color:#fbbf24; font-size:1.1rem;">★★★★★</div>
+                <p style="margin-top:0.8rem;">"Perfect vaccination schedule, clean environment, and the doctor's experience shows. Best in Cantt View."</p>
+                <p class="reviewer">— Zunaira Tariq</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─── BOOKING ─── -->
+<section id="booking">
+    <div class="container">
+        <div class="booking-glass">
+            <div>
+                <h2>Secure Your Consultation</h2>
+                <p>Limited evening slots available. Fill the form or contact directly.</p>
+                <p><i class="fas fa-phone-alt"></i> Call: <strong>0306 4660461</strong></p>
+                <p><i class="fab fa-whatsapp"></i> WhatsApp: <strong>0306 4660461</strong></p>
+                <p><i class="fas fa-envelope"></i> Email: <strong>drmunir152@gmail.com</strong></p>
+                <div class="addr-box"><i class="fas fa-location-dot"></i> Cantt View Phase 1, 2 Street, Lahore</div>
+            </div>
+            <div class="booking-form">
+                <input type="text" id="patientName" placeholder="Full Name">
+                <input type="tel" id="patientPhone" placeholder="Mobile Number">
+                <button id="bookBtn" class="btn-primary" style="width:100%; justify-content:center;"><i class="fab fa-whatsapp"></i> Confirm & Notify on WhatsApp</button>
+                <p style="font-size:0.7rem; margin-top:10px; color:rgba(255,255,255,0.6);">*Clicking will send an instant WhatsApp notification to the doctor with your details.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─── MAP (Correct Location) ─── -->
+<section id="map">
+    <div class="container">
+        <div style="text-align:center; margin-bottom:2rem;">
+            <span class="section-badge"><i class="fas fa-map-marker-alt"></i> Visit Clinic</span>
+            <h2>Conveniently Located in Lahore</h2>
+            <p style="font-size:1rem; color:var(--text-muted);">📍 Cantt View Phase 1, 2 Street, Cantt View Housing Scheme, Lahore</p>
+        </div>
+        <div class="map-wrapper">
+            <!--
+                Correct embed: searches Google Maps for the clinic by name and verified address.
+                Address confirmed: Cantt View Phase 1, 2 Street, Lahore (via Yandex & ApkaMuaalij).
+            -->
+            <iframe
+                src="https://maps.google.com/maps?q=Rana+Munir+Ahmad+Children+and+Family+Clinic,+Cantt+View+Phase+1,+Lahore,+Pakistan&output=embed"
+                width="100%"
+                height="380"
+                style="border:0; border-radius:28px;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+        <div class="addr-info">
+            📍 Exact Location: <strong>Cantt View Phase 1, 2 Street, Cantt View Housing Scheme, Lahore</strong> — Free parking available.
+        </div>
+        <div style="text-align:center; margin-top:1rem;">
+            <a href="https://maps.google.com/maps?q=Rana+Munir+Ahmad+Children+and+Family+Clinic,+Cantt+View+Phase+1,+Lahore,+Pakistan"
+               target="_blank" class="btn-primary" style="display:inline-flex;">
+                <i class="fas fa-directions"></i> Open in Google Maps
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ─── FAQ ─── -->
+<section id="faq">
+    <div class="container">
+        <div style="text-align:center;">
+            <span class="section-badge"><i class="fas fa-question-circle"></i> Quick Answers</span>
+            <h2>Common Inquiries</h2>
+        </div>
+        <div class="faq-group" style="margin-top:2rem;">
+            <div class="faq-item">
+                <div class="faq-header">What are Dr. Munir Ahmad Rana's qualifications? <i class="fas fa-plus"></i></div>
+                <div class="faq-body">Dr. Rana holds M.B.B.S. from King Edward Medical University, Lahore (1999). He is a Child Specialist, Family Physician, and currently Additional Medical Superintendent & Director Emergency at Govt. Sir Ganga Ram Hospital.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-header">What are the clinic timings? <i class="fas fa-plus"></i></div>
+                <div class="faq-body">Monday to Saturday: 7:00 PM – 11:00 PM. Emergency consultations can be arranged via phone on Sundays.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-header">Is the clinic equipped for pediatric emergencies? <i class="fas fa-plus"></i></div>
+                <div class="faq-body">Yes, basic emergency equipment, nebulizers, and vaccination cold chain are available. For major emergencies, Dr. Rana coordinates with Sir Ganga Ram Hospital.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-header">Where exactly is the clinic located? <i class="fas fa-plus"></i></div>
+                <div class="faq-body">The clinic is located at Cantt View Phase 1, 2 Street, Cantt View Housing Scheme, Lahore. Use the map above for precise directions or open Google Maps with the button provided.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-header">Do I need an appointment? <i class="fas fa-plus"></i></div>
+                <div class="faq-body">Appointments are recommended to reduce waiting time, but walk-ins are welcome. Evening slots are busy, so booking via call or WhatsApp is ideal.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+    <p><strong>Dr. Munir Ahmad Rana — Children & Family Clinic</strong><br>
+    📍 Cantt View Phase 1, 2 Street, Cantt View Housing Scheme, Lahore<br>
+    📞 0306 4660461 | 🕒 Mon–Sat (7PM–11PM) | Emergencies: 0306 4660461<br>
+    ✉️ <a href="mailto:drmunir152@gmail.com">drmunir152@gmail.com</a></p>
+    <p style="margin-top:0.8rem;">MBBS (King Edward Medical University) | Child Specialist | Addl. Medical Superintendent, Sir Ganga Ram Hospital</p>
+    <p style="margin-top:0.5rem; color:#64748b;">© 2025 — Trusted Care by a Legacy Physician</p>
+</footer>
+
+<!-- ─── FLOATING BUTTONS ─── -->
+<div class="floating">
+    <a href="tel:03064660461" class="f-btn" style="background:#1e4a76;"><i class="fas fa-phone-alt"></i></a>
+    <a href="https://wa.me/923064660461" class="f-btn" style="background:#25d366;"><i class="fab fa-whatsapp"></i></a>
+    <a href="mailto:drmunir152@gmail.com" class="f-btn" style="background:#ea4335;"><i class="fas fa-envelope"></i></a>
+</div>
+
+<script>
+    // FAQ toggles
+    document.querySelectorAll('.faq-header').forEach(header => {
+        header.addEventListener('click', () => {
+            const parent = header.parentElement;
+            parent.classList.toggle('open');
+            const icon = header.querySelector('i');
+            icon.classList.toggle('fa-plus', !parent.classList.contains('open'));
+            icon.classList.toggle('fa-minus', parent.classList.contains('open'));
+        });
+    });
+
+    // WhatsApp booking
+    document.getElementById('bookBtn')?.addEventListener('click', () => {
+        const name  = document.getElementById('patientName').value.trim();
+        const phone = document.getElementById('patientPhone').value.trim();
+        if (!name || !phone) {
+            alert("⚠️ Please provide your name and phone number to book an appointment.");
+            return;
+        }
+        const msg = `🩺 *New Appointment Request*%0A%0A👤 *Name:* ${encodeURIComponent(name)}%0A📞 *Phone:* ${encodeURIComponent(phone)}%0A🏥 *Clinic:* Dr. Munir Ahmad Rana%0A⏰ *Request Time:* ${new Date().toLocaleString()}%0A%0A⚠️ Please confirm availability and reply.`;
+        window.open(`https://wa.me/923064660461?text=${msg}`, '_blank');
+        alert(`✅ Thank you ${name}! Your appointment request has been sent via WhatsApp. You will receive a confirmation shortly. For urgent matters, call 0306 4660461.`);
+        document.getElementById('patientName').value = '';
+        document.getElementById('patientPhone').value = '';
+    });
+</script>
+</body>
+</html>
